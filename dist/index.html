@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LINKGENESIS SI — 제조 현장을 이해하는 소프트웨어 파트너</title>
+  <meta name="description" content="AI, 반도체·디스플레이·배터리 장비 소프트웨어와 공장 자동화 SI. 기획부터 구축, 검증, 운영 안정화까지 함께합니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308121f'/%3E%3Cpath d='M17 16v32h29v-8H26V16z' fill='%2300d5ff'/%3E%3Cpath d='M33 16h14v14h-8v-6h-6z' fill='%237c5cff'/%3E%3C/svg%3E" />
+  <style>
+    :root{--ink:#07111e;--ink2:#0c1929;--panel:#102135;--line:#233a52;--text:#f5f8fb;--muted:#9fb1c3;--cyan:#19d3f3;--blue:#4d85ff;--violet:#8468ff;--lime:#b6ef5d;--white:#fff;--max:1180px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}
+    .noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}.mono{font-family:'IBM Plex Mono',monospace}.eyebrow{font-family:'IBM Plex Mono',monospace;color:var(--cyan);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}.eyebrow::before{content:'// ';opacity:.55}
+    header{position:fixed;z-index:15;top:0;width:100%;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(7,17,30,.8);backdrop-filter:blur(18px)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.03em}.logo img{display:block;width:131px;height:22px;object-fit:contain}.logo small{display:block;color:#758ba0;font:500 .58rem/1 'IBM Plex Mono',monospace;letter-spacing:.12em;margin-top:2px}.navlinks{display:flex;gap:32px;align-items:center;font-size:.92rem;font-weight:600}.navlinks a:not(.nav-cta){color:#c3d0db}.navlinks a:hover{color:var(--white)}.nav-cta{padding:11px 18px;background:var(--cyan);color:#04101b;border-radius:3px}.menu-btn{display:none;background:none;border:0;color:white;font-size:1.5rem}
+    .hero{min-height:760px;padding:132px 0 62px;position:relative;display:grid;align-items:center}.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(800px 500px at 75% 35%,rgba(77,133,255,.14),transparent 68%),linear-gradient(rgba(25,211,243,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(25,211,243,.045) 1px,transparent 1px);background-size:auto,46px 46px,46px 46px;mask-image:linear-gradient(to bottom,black 60%,transparent)}.hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}.hero h1{font-size:clamp(3rem,5vw,4.5rem);line-height:1.05;letter-spacing:-.065em;margin:22px 0 26px;word-break:keep-all}.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1px #6f8ead}.hero h1 .solid{color:var(--text);-webkit-text-stroke:0}.hero-copy{font-size:1.13rem;color:#b7c5d1;max-width:610px}.hero-copy strong{color:#fff}.actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 22px;border:1px solid var(--line);border-radius:3px;font-weight:700;background:transparent;color:#fff}.btn.primary{background:linear-gradient(135deg,var(--cyan),#5aa6ff);border-color:transparent;color:#04111d}.btn:hover{transform:translateY(-2px);transition:.2s}.btn .arrow{font-size:1.2rem}
+    .signal{position:relative;aspect-ratio:1/1;border:1px solid rgba(25,211,243,.22);border-radius:50%;display:grid;place-items:center;max-width:500px;margin:auto}.signal::before,.signal::after{content:'';position:absolute;border:1px dashed rgba(25,211,243,.2);border-radius:50%}.signal::before{inset:11%}.signal::after{inset:25%;animation:spin 18s linear infinite}.core{width:38%;aspect-ratio:1;border:1px solid var(--cyan);background:rgba(25,211,243,.08);display:grid;place-items:center;transform:rotate(45deg);box-shadow:0 0 70px rgba(25,211,243,.13)}.core span{transform:rotate(-45deg);font:600 .76rem/1.5 'IBM Plex Mono',monospace;text-align:center;color:var(--cyan)}.node{position:absolute;width:136px;padding:12px 14px;border:1px solid var(--line);background:rgba(9,23,38,.9);font:500 .72rem/1.4 'IBM Plex Mono',monospace;color:#c8d6e2}.node::before{content:'';display:inline-block;width:7px;height:7px;background:var(--cyan);border-radius:50%;margin-right:8px;box-shadow:0 0 12px var(--cyan)}.n1{top:7%;right:2%}.n2{bottom:15%;right:-3%}.n3{left:-3%;bottom:20%}.n4{left:1%;top:18%}.pulse{position:absolute;inset:-1px;border:1px solid var(--cyan);border-radius:50%;animation:pulse 3s ease-out infinite}@keyframes pulse{to{transform:scale(1.08);opacity:0}}@keyframes spin{to{transform:rotate(360deg)}}
+    .cap-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0a1726}.cap-row{display:grid;grid-template-columns:repeat(5,1fr)}.cap{padding:22px 12px;text-align:center;border-right:1px solid var(--line);color:#8fa5b8;font:500 .75rem 'IBM Plex Mono',monospace}.cap:first-child{border-left:1px solid var(--line)}.cap b{color:var(--cyan);margin-right:8px}
+    section{padding:120px 0}.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:end;margin-bottom:56px}.section-head h2{font-size:clamp(2.2rem,4.8vw,4.1rem);line-height:1.12;letter-spacing:-.05em;margin:14px 0 0}.section-head p{color:var(--muted);font-size:1.06rem;max-width:580px;margin:0 0 8px}
+    .services{background:linear-gradient(180deg,#081522,#0b1b2c)}.service-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.service-card{position:relative;min-height:360px;padding:34px;border:1px solid var(--line);background:rgba(17,34,53,.7);overflow:hidden}.service-card:nth-child(1){grid-column:span 5}.service-card:nth-child(2){grid-column:span 7}.service-card:nth-child(3){grid-column:span 7}.service-card:nth-child(4){grid-column:span 5}.service-card::after{content:'';position:absolute;width:230px;height:230px;border-radius:50%;background:var(--glow,var(--cyan));filter:blur(90px);opacity:.08;right:-100px;bottom:-100px}.num{font:500 .75rem 'IBM Plex Mono',monospace;color:var(--cyan);letter-spacing:.12em}.service-card h3{font-size:1.72rem;letter-spacing:-.03em;margin:68px 0 14px}.service-card p{color:var(--muted);max-width:510px;margin:0}.tags{position:absolute;left:34px;right:34px;bottom:30px;display:flex;gap:7px;flex-wrap:wrap}.tag{border:1px solid #2b4560;padding:6px 9px;color:#9eb2c3;font:500 .7rem 'IBM Plex Mono',monospace}.service-card:hover{border-color:#4b7794;transform:translateY(-4px);transition:.3s}
+    .why{position:relative}.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.proof{border-top:1px solid var(--line);padding:30px 0;display:grid;grid-template-columns:74px 1fr;gap:20px}.proof .icon{width:54px;height:54px;border:1px solid #365069;display:grid;place-items:center;color:var(--cyan);font:600 .75rem 'IBM Plex Mono',monospace}.proof h3{margin:0 0 8px;font-size:1.25rem}.proof p{margin:0;color:var(--muted)}
+    .process{background:#eaf0f4;color:#07111e}.process .eyebrow{color:#2369cc}.process .section-head p{color:#51606d}.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #b9c7d2;border-bottom:1px solid #b9c7d2}.step{padding:34px 28px 44px;border-right:1px solid #b9c7d2}.step:last-child{border-right:0}.step .n{font:600 .8rem 'IBM Plex Mono',monospace;color:#2369cc}.step h3{margin:52px 0 12px;font-size:1.25rem}.step p{color:#566675;margin:0;font-size:.94rem}
+    .fit{background:radial-gradient(600px 350px at 10% 10%,rgba(132,104,255,.15),transparent),#091625}.fit-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:70px}.fit h2{font-size:clamp(2.2rem,4vw,3.6rem);letter-spacing:-.05em;line-height:1.15;margin:16px 0 20px}.fit-copy{color:var(--muted)}.fit-points{margin-top:38px;display:grid;gap:14px}.fit-point{display:flex;gap:12px;align-items:center;color:#c5d2dd}.fit-point i{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 12px var(--cyan)}.diagnostic{border:1px solid #294159;background:#0d1e30;padding:34px}.diagnostic label{display:block;font-size:.84rem;color:#a8bac9;margin:0 0 9px}.field{margin-bottom:22px}.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.choice{border:1px solid #294159;background:#0a1928;color:#bfd0de;padding:13px;text-align:left}.choice.active{border-color:var(--cyan);color:#fff;background:rgba(25,211,243,.09)}select{width:100%;padding:13px;background:#0a1928;color:#d9e4ed;border:1px solid #294159}.result{display:none;margin-top:20px;padding:20px;border-left:3px solid var(--lime);background:rgba(182,239,93,.06);color:#dce9d0}.result.show{display:block}.result strong{display:block;color:var(--lime);margin-bottom:4px}
+    .cta{padding:100px 0;background:linear-gradient(135deg,var(--cyan),#5e7cff 58%,var(--violet));color:#03101c}.cta-inner{display:flex;justify-content:space-between;gap:30px;align-items:center}.cta h2{font-size:clamp(2.3rem,5vw,4.8rem);letter-spacing:-.06em;line-height:1.06;margin:0}.cta p{font-weight:600;max-width:430px}.cta .btn{background:#07111e;border-color:#07111e;white-space:nowrap}
+    footer{padding:50px 0;background:#050d17;color:#8195a7}.footer-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:36px}.footer-grid h4{color:#e7eef4;margin:0 0 12px}.footer-grid p{font-size:.87rem;margin:3px 0}.copy{border-top:1px solid #192a3a;margin-top:36px;padding-top:22px;display:flex;justify-content:space-between;font:.72rem 'IBM Plex Mono',monospace}.reveal{opacity:0;transform:translateY(24px);transition:.7s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#081521;padding:24px;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu-btn{display:block}.hero{min-height:auto}.hero-grid,.section-head,.fit-grid{grid-template-columns:1fr}.hero-grid{gap:70px}.signal{width:min(90vw,440px)}.cap-row{grid-template-columns:repeat(2,1fr)}.cap:last-child{grid-column:span 2}.service-card:nth-child(n){grid-column:span 12;min-height:330px}.why-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid #b9c7d2}.cta-inner{display:block}.cta .btn{margin-top:24px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.wrap{width:min(100% - 30px,var(--max))}.hero{padding-top:125px}.hero h1{font-size:2.9rem}.hero-copy{font-size:1rem}.signal{width:100%}.node{width:118px;font-size:.63rem}.service-card{padding:26px}.service-card h3{margin-top:48px}.tags{left:26px;right:26px}.steps,.footer-grid{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid #b9c7d2!important}.step:last-child{border-bottom:0!important}.choice-grid{grid-template-columns:1fr}.diagnostic{padding:24px}.copy{display:block}.copy span{display:block;margin-top:10px}section{padding:88px 0}}
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <header><div class="wrap nav">
+    <a href="#top" class="logo" aria-label="링크제니시스 SI 홈"><img src="https://linkgenesis.co.kr/static/images/ci-linkgenesis.png" alt="LINKGENESIS" /></a>
+    <nav class="navlinks" id="navlinks" aria-label="주요 메뉴"><a href="#services">서비스</a><a href="#why">수행 역량</a><a href="#process">수행 방식</a><a href="#fit">과제 진단</a><a class="nav-cta" href="#contact">SI 상담 요청</a></nav>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div></header>
+
+  <main id="top">
+    <section class="hero"><div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Industrial software integration</div>
+        <h1><span class="solid">현장을 아는 SW</span><span>라인을 움직입니다</span></h1>
+        <p class="hero-copy"><strong>AI, 반도체·디스플레이·배터리 장비 SW, 공장 자동화 SI.</strong><br>장비 한 대의 제어부터 전 공장의 데이터 흐름까지, 제조 현장에 맞춰 설계하고 끝까지 안정화합니다.</p>
+        <div class="actions"><a class="btn primary" href="#fit">과제 범위 빠른 진단 <span class="arrow">↗</span></a><a class="btn" href="#services">기술 역량 보기 <span class="arrow">↓</span></a></div>
+      </div>
+      <div class="signal" aria-label="장비부터 공장까지 연결되는 소프트웨어 통합 구조">
+        <div class="pulse"></div><div class="core"><span>LINK<br>GENESIS<br>SI CORE</span></div>
+        <div class="node n1">EQUIPMENT SW</div><div class="node n2">MES · HOST</div><div class="node n3">AI · VISION</div><div class="node n4">SECS/GEM · PLC</div>
+      </div>
+    </div></section>
+
+    <div class="cap-strip"><div class="wrap cap-row"><div class="cap"><b>01</b>SECS/GEM</div><div class="cap"><b>02</b>CIM · EQUIPMENT SW</div><div class="cap"><b>03</b>AI VISION</div><div class="cap"><b>04</b>MES · MONITORING</div><div class="cap"><b>05</b>TEST AUTOMATION</div></div></div>
+
+    <section class="services" id="services"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">What we build</div><h2>제품이 아니라<br>작동하는 현장을 구축합니다</h2></div><p>요구사항이 모호한 초기 단계부터 참여해 장비, 통신, 데이터, 검증을 하나의 실행 가능한 시스템으로 연결합니다.</p></div>
+      <div class="service-grid">
+        <article class="service-card reveal"><span class="num">01 / AI</span><h3>산업 AI · 비전</h3><p>검사 이미지와 설비 데이터를 현장 의사결정으로 전환합니다. 불량 탐지, 분류, 이상 감지, 예지보전까지 모델 개발과 운영 환경을 함께 구축합니다.</p><div class="tags"><span class="tag">VISION INSPECTION</span><span class="tag">ANOMALY DETECTION</span><span class="tag">MLOPS</span></div></article>
+        <article class="service-card reveal" style="--glow:#8468ff"><span class="num">02 / EQUIPMENT</span><h3>반도체 · 디스플레이 · 배터리 장비 SW</h3><p>장비 제어, 공정 시퀀스, UI/HMI, 레시피, 알람, 데이터 수집을 장비 특성과 양산 조건에 맞춰 설계합니다. SECS/GEM 및 Host 연동까지 한 팀이 책임집니다.</p><div class="tags"><span class="tag">EQUIPMENT CONTROL</span><span class="tag">SECS/GEM</span><span class="tag">RECIPE · ALARM</span><span class="tag">HMI</span></div></article>
+        <article class="service-card reveal" style="--glow:#4d85ff"><span class="num">03 / SMART FACTORY</span><h3>공장 자동화 SI</h3><p>이기종 설비와 PLC, MES, 물류 시스템을 연결해 생산 흐름을 가시화합니다. 실시간 모니터링과 추적성, 설비 인터페이스를 단계적으로 구현합니다.</p><div class="tags"><span class="tag">MES · CIM</span><span class="tag">PLC · OPC UA</span><span class="tag">TRACEABILITY</span><span class="tag">DASHBOARD</span></div></article>
+        <article class="service-card reveal" style="--glow:#b6ef5d"><span class="num">04 / VERIFICATION</span><h3>테스트 · 검증 자동화</h3><p>반복 시험과 회귀 테스트를 자동화하고 결과를 정량화합니다. 장비 SW부터 IT 제품까지 출시 품질과 검증 속도를 동시에 높입니다.</p><div class="tags"><span class="tag">AUTOMATED TEST</span><span class="tag">CI · REPORT</span><span class="tag">QUALITY GATE</span></div></article>
+      </div>
+    </div></section>
+
+    <section class="why" id="why"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Why linkgenesis</div><h2>SI의 성패는<br>현장 이해에서 갈립니다</h2></div><p>링크제니시스는 2003년 설립 이후 생산정보 자동화와 시스템 검증 자동화에 집중해 온 산업 소프트웨어 전문기업입니다.</p></div>
+      <div class="why-grid">
+        <div class="proof reveal"><div class="icon">STD</div><div><h3>표준과 장비를 함께 이해</h3><p>SEMI 표준 통신과 장비 동작, Host 요구사항을 동시에 해석해 인터페이스 리스크를 줄입니다.</p></div></div>
+        <div class="proof reveal"><div class="icon">RUN</div><div><h3>양산 안정화까지 책임</h3><p>개발 완료가 아니라 현장 셋업, 장애 분석, 성능 튜닝과 인수 기준 충족까지 수행합니다.</p></div></div>
+        <div class="proof reveal"><div class="icon">MOD</div><div><h3>재사용 가능한 모듈과 프레임워크</h3><p>검증된 통신·제어·모니터링 자산을 활용해 일정 예측력과 품질을 높입니다.</p></div></div>
+        <div class="proof reveal"><div class="icon">ONE</div><div><h3>하나의 기술 창구</h3><p>기획, 아키텍처, 개발, 검증, 배포를 분절하지 않고 산업 도메인 팀이 일관되게 수행합니다.</p></div></div>
+      </div>
+    </div></section>
+
+    <section class="process" id="process"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Delivery system</div><h2>불확실성을 먼저<br>설계합니다</h2></div><p>초기 진단에서 인수까지, 발주사와 수행사가 같은 기준으로 진행 상황과 품질을 확인합니다.</p></div>
+      <div class="steps reveal"><div class="step"><span class="n">STEP 01</span><h3>현장 · 요구 진단</h3><p>공정, 장비, 인터페이스, 기존 시스템과 제약 조건을 빠르게 구조화합니다.</p></div><div class="step"><span class="n">STEP 02</span><h3>PoC · 아키텍처</h3><p>핵심 리스크를 작은 범위에서 검증하고 구축 범위와 기술 기준을 확정합니다.</p></div><div class="step"><span class="n">STEP 03</span><h3>구축 · 통합 검증</h3><p>단계별 산출물과 테스트 결과를 공유하며 현장 연동까지 통합 수행합니다.</p></div><div class="step"><span class="n">STEP 04</span><h3>양산 · 운영 안정화</h3><p>성능, 장애, 변경 대응 기준을 확인하고 운영 조직으로 안정적으로 이관합니다.</p></div></div>
+    </div></section>
+
+    <section class="fit" id="fit"><div class="wrap fit-grid">
+      <div class="reveal"><div class="eyebrow">Project fit check</div><h2>우리 과제, 어디서부터 시작해야 할까요?</h2><p class="fit-copy">두 가지를 선택하면 권장 착수 방식을 바로 확인할 수 있습니다. 상세 범위는 기술 미팅에서 함께 구체화합니다.</p><div class="fit-points"><div class="fit-point"><i></i>아이디어 단계도 상담 가능</div><div class="fit-point"><i></i>기존 장비·시스템 연동 검토</div><div class="fit-point"><i></i>PoC부터 양산 구축까지 단계 제안</div></div></div>
+      <div class="diagnostic reveal" aria-label="프로젝트 적합성 진단">
+        <div class="field"><label>과제 분야</label><div class="choice-grid" id="typeChoices"><button class="choice active" data-value="장비 SW">장비 SW</button><button class="choice" data-value="공장 자동화">공장 자동화</button><button class="choice" data-value="산업 AI">산업 AI</button><button class="choice" data-value="테스트 자동화">테스트 자동화</button></div></div>
+        <div class="field"><label for="stage">현재 단계</label><select id="stage"><option value="아이디어·요구 정리">아이디어·요구 정리</option><option value="PoC 필요">PoC 필요</option><option value="구축사 선정">구축사 선정</option><option value="기존 시스템 고도화">기존 시스템 고도화</option></select></div>
+        <button class="btn primary" id="diagnose" type="button">권장 착수 방식 확인 <span class="arrow">→</span></button>
+        <div class="result" id="result" role="status"><strong id="resultTitle"></strong><span id="resultBody"></span></div>
+      </div>
+    </div></section>
+
+    <section class="cta" id="contact"><div class="wrap cta-inner"><div><h2>과제의 첫 30분,<br>기술팀과 바로 시작하세요.</h2><p>장비 사양서, 인터페이스 목록, 현장 이슈 중 준비된 자료가 있다면 더 구체적으로 검토할 수 있습니다.</p></div><a class="btn" href="tel:0314223581">SI 상담 031-422-3581 <span class="arrow">↗</span></a></div></section>
+  </main>
+
+  <footer><div class="wrap"><div class="footer-grid"><div><a href="#top" class="logo"><img src="https://linkgenesis.co.kr/static/images/ci-linkgenesis.png" alt="LINKGENESIS" /></a></div><div><h4>본사</h4><p>경기도 안양시 동안구 시민대로 401</p><p>대륭테크노타운 15차 상가동 319호</p></div><div><h4>Contact</h4><p>Tel. 031-422-3581</p><p>Fax. 031-422-3585</p><p><a href="https://www.linkgenesis.co.kr/" target="_blank" rel="noopener">www.linkgenesis.co.kr ↗</a></p></div></div><div class="copy"><span>© LINKGENESIS CO., LTD.</span><span>AI · EQUIPMENT SW · SMART FACTORY SI</span></div></div></footer>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('navlinks');
+    menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'×':'☰'});
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    let projectType='장비 SW';document.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.choice').forEach(b=>b.classList.remove('active'));btn.classList.add('active');projectType=btn.dataset.value}));
+    const recommendations={'아이디어·요구 정리':'요구 정의 워크숍','PoC 필요':'핵심 리스크 PoC','구축사 선정':'기술 제안 및 구축 계획','기존 시스템 고도화':'현행 분석 및 단계 전환'};
+    document.getElementById('diagnose').addEventListener('click',()=>{const stage=document.getElementById('stage').value;document.getElementById('resultTitle').textContent=`${recommendations[stage]}부터 권장합니다.`;document.getElementById('resultBody').textContent=`${projectType} 과제의 현재 단계는 ‘${stage}’입니다. 기존 환경과 인수 기준을 먼저 확인한 뒤 범위·일정·리스크를 제안합니다.`;document.getElementById('result').classList.add('show')});
+  </script>
+</body>
+</html>
